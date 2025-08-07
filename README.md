@@ -1,7 +1,7 @@
 <table border=1 border-collapse="collapse" width="100%">
   <thead>
     <th>
-      <img src="https://images.seeklogo.com/logo-png/20/2/epm-logo-png_seeklogo-203277.png" width="320px" height="270px" />
+      <img src="https://static.wikia.nocookie.net/logopedia/images/5/52/EPM2007.png/revision/latest?cb=20210505181105&path-prefix=es" width="320px" height="270px" />
     </th>
     <th>
       <h1>Gestores de RCD</h1>
