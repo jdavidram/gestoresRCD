@@ -10,7 +10,7 @@
 </table>
 
 > [!NOTE]
-> Proyecto Talento Tech
+> Practica EPM - Proyecto Talento Tech
 
 ## Introducción
 
