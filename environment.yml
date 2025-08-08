@@ -2,11 +2,11 @@ name: rcd
 channels:
   - defaults
 dependencies:
-  - matplotlib
-  - jupyterlab
-  - numpy
-  - pandas
-  - python=3.12
   - seaborn
+  - numpy
+  - jupyterlab
+  - python=3.12
+  - pandas
   - jupyter
+  - matplotlib
 prefix: /home/jdavidram/anaconda3/envs/rcd
