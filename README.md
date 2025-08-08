@@ -11,6 +11,14 @@
 
 > [!NOTE]
 > Practica EPM - Proyecto Talento Tech
+> 
+> Tomas esta implementado el mapa en python
+> 
+> Darwin esta buscando un modelo predictivo adeacuado al proyecto
+> 
+> David hara el relacionamiento de tablas
+> 
+> Bilmar adelantara el texto en el github
 
 ## Introducción
 
@@ -90,6 +98,9 @@ A continuación, presento una tabla con el ancho de las canalizaciones hechas (0
         </tr>
     </tbody>
 </table>
+
+## Objetivo general 
+Desarrollar un análisis espacial integral de la gestión de Residuos de Construcción y Demolición (RCD) en Antioquia, que permita cuantificar el potencial de aprovechamiento de materiales no gestionados adecuadamente y generar predicciones de demanda futura, con el fin de optimizar la planificación territorial y fortalecer los sistemas de gestión sostenible de RCD en el departamento.
 
 ## Bibliografia
 
