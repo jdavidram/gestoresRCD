@@ -126,3 +126,11 @@ Desarrollar un análisis espacial integral de la gestión de Residuos de Constru
 * [Listado de gestores de RCD](./DATA/GestoresRCD.csv)
 * [Ejecuciones en obra](./DATA/Items.csv)
 * [Servicio de gas](./DATA/subregiones.csv)
+
+## Config Virtual Environment
+
+Crea el entorno virtual desde el archivo **.yml**:
+
+```bash
+conda env create -f environment.yml
+```
