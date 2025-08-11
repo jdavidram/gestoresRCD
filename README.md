@@ -150,8 +150,39 @@ Los principales actores identificados son:
 
 ## Config Virtual Environment
 
-Crea el entorno virtual desde el archivo **.yml**:
+Crear el entorno virtual desde el archivo *.yml* con **pip**
+
+```bash
+pip install -r environment.yml
+```
+
+Crea el entorno virtual desde el archivo *.yml* con **conda**
 
 ```bash
 conda env create -f environment.yml
 ```
+
+Abrir Anaconda navigator
+
+```bash
+anaconda-navigator
+```
+
+Abrir en un notebook de **Jupyter**
+
+```bash
+jupyter-notebook
+```
+
+Abrir el editor de **JupyterLab**
+
+```bash
+jupyter lab
+```
+
+Crear el Dashboard a partir de notebook con **Voila**
+
+```bash
+voila notebook.ipynb
+```
+

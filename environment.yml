@@ -10,4 +10,5 @@ dependencies:
   - jupyter
   - matplotlib
   - voila
+  - anaconda-navigator
 prefix: /home/jdavidram/anaconda3/envs/rcd
