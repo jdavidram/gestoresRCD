@@ -9,4 +9,5 @@ dependencies:
   - pandas
   - jupyter
   - matplotlib
+  - voila
 prefix: /home/jdavidram/anaconda3/envs/rcd

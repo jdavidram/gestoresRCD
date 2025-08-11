@@ -1,13 +1,13 @@
 import pandas as pd
 
 def noSymbol(txt):
-    symbols = ["(", ")"]
+    symbols = ["(", ")", "/"]
     ans = txt
     for s in symbols:
         ans = ans.replace(s, "")
     return ans
 
-def csv_sql(table, dirDF):
+def csv_sql(table: str, dirDF: str):
     df = pd.read_csv(dirDF)
     sql = "DROP TABLE IF EXISTS " + table + ";\n\n"
     sql += """CREATE TABLE """ + table + """ (
