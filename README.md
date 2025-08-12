@@ -20,87 +20,10 @@
 > 
 > Bilmar adelantará el análisis descriptivo
 
-## Análisis Espacial para la Gestión de Residuos de Construcción y Demolición (RCD) en Antioquia
-    esta sujeto a cambios
-    
+
 ## Introducción
 
 La gestión adecuada de los residuos de construcción y demolición (RCD) es un componente esencial para el desarrollo sostenible en el sector de la construcción. En Colombia, y particularmente en el departamento de Antioquia, el crecimiento urbano ha generado un aumento significativo en la generación de RCD, lo que plantea retos importantes en términos de aprovechamiento y disposición final. Este trabajo propone una metodología de análisis espacial que permite vincular las ejecuciones de obra con los gestores de RCD autorizados en la región. Para ello, se emplearon diagramas de Voronoi como herramienta para delimitar las áreas de cobertura de cada gestor, facilitando la identificación de las obras que potencialmente pudieron haber gestionado sus residuos de manera más eficiente. Esta aproximación busca contribuir al fortalecimiento de la planificación ambiental territorial y a la optimización de los sistemas de gestión de RCD en Antioquia.
-
-A continuación, presento una tabla con el ancho de las canalizaciones hechas (0.25 metros) y las profundidades en metros de cada una de las diferentes capas en cada una de las canalizaciones.
-
-<table border-collapse="collapse">
-    <thead>
-        <tr>
-            <th rowspan="2" colspan="2" style="text-align: center;">Canalizacion</th>
-            <th colspan="4" style="text-align: center;">RCD</th>
-        </tr>
-        <tr>
-            <th style="text-align: center;">Tierras</th>
-            <th style="text-align: center;">Base</th>
-            <th style="text-align: center;">Concreto</th>
-            <th style="text-align: center;">PvF</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Canalizacion tuberia en zona verde</td>
-            <td>0.25</td>
-            <td>0.60</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>Canalizacion tuberia en anden</td>
-            <td>0.25</td>
-            <td>0.30</td>
-            <td>0.20</td>
-            <td>0.10</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>Canalizacion tuberia en cuneta</td>
-            <td>0.25</td>
-            <td>0.40</td>
-            <td>0.20</td>
-            <td>0.10</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>Canalizacion tuberia en asfalto</td>
-            <td>0.25</td>
-            <td>0.30</td>
-            <td>0.30</td>
-            <td>0</td>
-            <td>0.10</td>
-        </tr>
-        <tr>
-            <td>Canalizacion tuberia en concreto</td>
-            <td>0.25</td>
-            <td>0.30</td>
-            <td>0.20</td>
-            <td>0.20</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>Canalizacion tuberia en adoquin</td>
-            <td>0.25</td>
-            <td>0.40</td>
-            <td>0.20</td>
-            <td>0.10</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>Canalizacion tuberia en destapado</td>
-            <td>0.25</td>
-            <td>0.30</td>
-            <td>0.40</td>
-            <td>0</td>
-            <td>0</td>
-        </tr>
-    </tbody>
-</table>
 
 ## Objetivo general 
 Desarrollar un análisis espacial integral de la gestión de Residuos de Construcción y Demolición (RCD) en Antioquia, que permita cuantificar el potencial de aprovechamiento de materiales no gestionados adecuadamente y generar predicciones de demanda futura, con el fin de optimizar la planificación territorial y fortalecer los sistemas de gestión sostenible de RCD en el departamento.
