@@ -4,7 +4,7 @@
       <img src="https://static.wikia.nocookie.net/logopedia/images/5/52/EPM2007.png/revision/latest?cb=20210505181105&path-prefix=es" width="320px" height="270px" />
     </th>
     <th>
-      <h1>Análisis Espacial para la Gestión de Residuos de Construcción y Demolición (RCD) en Antioquia</h1>
+      <h1>Análisis de Datos para la Gestión de Residuos de Construcción y Demolición (RCD) en Antioquia</h1>
     </th>
   </thead>
 </table>
