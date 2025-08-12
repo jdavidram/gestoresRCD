@@ -4,7 +4,7 @@
       <img src="https://static.wikia.nocookie.net/logopedia/images/5/52/EPM2007.png/revision/latest?cb=20210505181105&path-prefix=es" width="320px" height="270px" />
     </th>
     <th>
-      <h1>Gestores de RCD</h1>
+      <h1>Análisis Espacial para la Gestión de Residuos de Construcción y Demolición (RCD) en Antioquia</h1>
     </th>
   </thead>
 </table>
@@ -12,13 +12,13 @@
 > [!NOTE]
 > Practica EPM - Proyecto Talento Tech
 > 
-> Tomas esta implementado el mapa en python
+> Tomas esta trabajando en los modelos predictivos y mapas
 > 
-> Darwin esta buscando un modelo predictivo adeacuado al proyecto
+> Darwin esta trabajando en los modelos predictivos y mapas
 > 
-> David hara el relacionamiento de tablas
+> David va a organizar las bases de datos
 > 
-> Bilmar adelantara el texto en el github
+> Bilmar adelantará el análisis descriptivo
 
 ## Análisis Espacial para la Gestión de Residuos de Construcción y Demolición (RCD) en Antioquia
     esta sujeto a cambios
