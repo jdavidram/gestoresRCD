@@ -16,10 +16,7 @@
 > 
 > Darwin esta trabajando en los modelos predictivos y mapas
 > 
-> David va a organizar las bases de datos
-> 
 > Bilmar adelantará el análisis descriptivo
-
 
 ## Introducción
 
@@ -70,6 +67,9 @@ Los principales actores identificados son:
 * [Listado de gestores de RCD](./DATA/GestoresRCD.csv)
 * [Ejecuciones en obra](./DATA/Items.csv)
 * [Servicio de gas](./DATA/subregiones.csv)
+
+> [!IMPORTANT]
+> El modulo **csv_sql.py**, no reconoce automaticamente el tipo de columna.
 
 ## Config Virtual Environment
 

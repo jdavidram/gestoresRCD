@@ -2,13 +2,13 @@ from qgis.core import *
 from qgis.gui import *
 
 @qgsfunction(args='auto', group='Custom')
-def noAccent(txt: str, feature, parent):
+def noAccent(txt: str, feature, parent, upper: bool=True):
     """
     Remove spanish accents:
     <h2>Example usage:</h2>
     <ul>
-      <li>noAccent("corazon") -> "CORAZON"</li>
-      <li>noAccent("educacion") -> "EDUCACION"</li>
+      <li>noAccent("corazón") -> "CORAZON"</li>
+      <li>noAccent("educación") -> "EDUCACION"</li>
     </ul>
     """
     accent = {
@@ -22,4 +22,7 @@ def noAccent(txt: str, feature, parent):
     ans = txt.lower()
     for k,v in accent.items():
         ans = ans.replace(k, v)
-    return ans.upper()
+    if upper:
+        return ans.upper()
+    else:
+        return ans
