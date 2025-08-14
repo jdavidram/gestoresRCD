@@ -5,10 +5,13 @@ dependencies:
   - seaborn
   - numpy
   - jupyterlab
-  - python=3.12
+  - python=3.13.5
   - pandas
   - jupyter
   - matplotlib
   - voila
-  - anaconda-navigator
+  - anaconda-navigator=2.6.6
+  - scikit-learn
+  - scipy
+  - geopandas
 prefix: /home/jdavidram/anaconda3/envs/rcd
