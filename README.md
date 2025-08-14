@@ -73,6 +73,18 @@ Los principales actores identificados son:
 
 ## Config Virtual Environment
 
+Crear la carpeta con el entorno virtual en el que se está trabajando
+
+```bash
+python -m venv env
+```
+
+Activar el entorno virtual desde el esquema de carpetas
+
+```bash
+env/scripts/activate
+```
+
 Crear el entorno virtual desde el archivo *.yml* con **pip**
 
 ```bash
