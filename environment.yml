@@ -9,7 +9,6 @@ dependencies:
   - pandas
   - jupyter
   - matplotlib
-  - voila
   - anaconda-navigator=2.6.6
   - scikit-learn
   - scipy
