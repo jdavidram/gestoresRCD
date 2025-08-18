@@ -8,6 +8,8 @@ import fiona  # para listar capas
 import base64
 import joblib
 import pandas as pd
+import numpy as np
+from folium.plugins import MarkerCluster
 
 # =========================
 # Configuración de página
@@ -73,7 +75,7 @@ st.markdown(f"""
         border-radius: 16px;
         text-align: center;
         color: #FFFFFF;
-        font-size: 34px;
+        font-size: 34px !important; /* fijo */
         font-weight: 700;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         margin-bottom: 25px;
@@ -82,10 +84,18 @@ st.markdown(f"""
     /* =========================
        Subtítulos
     ========================= */
-    h2, h3 {{
+    h2, h3, h4 {{
         color: #2E2E2E; /* gris carbón */
         margin-bottom: 20px;
+        font-size: 36px !important;
         font-weight: 600;
+    }}
+
+    /* =========================
+       Texto dentro de divs (excepto banner)
+    ========================= */
+    div:not(.banner) {{
+        font-size: 20px;  /* aquí aumentas el tamaño del texto */
     }}
 
     /* =========================
@@ -105,10 +115,10 @@ st.markdown(f"""
     }}
 
     /* Aplica el estilo directo al texto del tab */
-.stTabs [role="tablist"] button p {{
-    font-size: 22px !important;
-    font-weight: 700 !important;
-}}
+    .stTabs [role="tablist"] button p {{
+        font-size: 22px !important;
+        font-weight: 700 !important;
+    }}
 
     .stTabs [role="tablist"] button:hover {{
         background-color: #A5D6A7; /* verde medio */
@@ -159,7 +169,8 @@ st.markdown(f"""
     button:hover {{
         background-color: #2E7D32;
     }}
-    </style>
+</style>
+
 """, unsafe_allow_html=True)
 
 # =========================
@@ -193,7 +204,7 @@ with tab2:
     st.write("Aquí irían tus resultados de predicción.")
 
 with tab3:
-    st.subheader("Análisis Predictivo")
+    st.subheader("🧠 Análisis Predictivo")
 
     # =========================
     # LÓGICA DE MAPAS (SIN CAMBIOS)
@@ -213,11 +224,12 @@ with tab3:
     print("CRS:", gdf.crs)
 
     # Lista de municipios a partir del archivo
-    LISTA_MUNICIPIOS = sorted(gdf["MpNombre"].unique())
+    mapeo_municipios = pd.read_csv('mapeo_municipios.csv')
+    LISTA_MUNICIPIOS = mapeo_municipios["Municipio"]
 
-    st.markdown("Selecciona un municipio, ubica un punto dentro de él y calcula la predicción.")
+    st.markdown("Selecciona un municipio, ubica unas coordenadas dentro de él y calcula los residuos de construcción y demolición que se pueden aprovechar.")
 
-    municipio_sel = st.selectbox("📍 Selecciona Municipio", LISTA_MUNICIPIOS)
+    municipio_sel = st.selectbox("📍 Selecciona Municipio", sorted(LISTA_MUNICIPIOS))
 
     # Filtrar municipio seleccionado (GeoDataFrame)
     mun_gdf = gdf[gdf["MpNombre"] == municipio_sel]
@@ -259,7 +271,20 @@ with tab3:
             st.error(f"❌ La ubicación seleccionada está fuera del municipio de {municipio_sel}.")
 
         else:
-            st.success(f"✅ Predicción para {municipio_sel} ({subregion}) en ({lat:.4f}, {lon:.4f})")
+            st.success(f"🔍 Predicción para {municipio_sel} ({subregion}) en ({lat:.4f}, {lon:.4f})")
+
+            # -----------------------------
+            # Añadir puntero en el mapa principal
+            # -----------------------------
+            folium.Marker(
+                location=[lat, lon],
+                popup="Ubicación seleccionada",
+                icon=folium.Icon(color="blue", icon="map-marker")
+            ).add_to(m)
+
+            # Renderizar mapa con puntero
+            st_folium(m, width=700, height=500)
+
 
             # ================================
             # Función para cargar y usar modelos
@@ -275,8 +300,12 @@ with tab3:
                 # convertir datos en DataFrame con las columnas esperadas
                 X_nuevo = pd.DataFrame([datos_nuevos], columns=["Municipio", "Latitud_Y", "Longitud_X"])
                 return modelo.predict(X_nuevo)[0]
-            
-            punto_a_predicir = [municipio_sel, lat, lon]
+
+            num_municipio = mapeo_municipios.loc[
+                mapeo_municipios["Municipio"] == municipio_sel, "Codigo"
+            ].values[0]
+
+            punto_a_predicir = [num_municipio, lat, lon]
 
             pred_pavimento = predecir("pavimento", punto_a_predicir)
             pred_concreto  = predecir("concreto", punto_a_predicir)
@@ -289,5 +318,140 @@ with tab3:
             print("Roca     :", pred_roca)
             print("Tierras  :", pred_tierras)
 
+            # ================================
+            # MAPA DE RESULTADOS
+            # ================================
+            mapa_pred = folium.Map(location=[lat, lon], zoom_start=11)
+
+            # Marcar la ubicación seleccionada
+            folium.Marker(
+                location=[lat, lon],
+                popup="Ubicación seleccionada",
+                icon=folium.Icon(color="red", icon="map-marker")
+            ).add_to(mapa_pred)
+
+            ubicaciones = {}
+
+            def agregar_gestor(cercano, color, residuo):
+                key = (cercano["Y"], cercano["X"])
+                if key not in ubicaciones:
+                    ubicaciones[key] = []
+                ubicaciones[key].append((residuo, cercano))
+
+            dataRCD = pd.read_csv("datos_gestores_rcd.csv")
+
+            # ================================
+            # Función para encontrar el más cercano
+            # ================================
+            def gestor_mas_cercano(df, lat, lon):
+                """Encuentra el gestor más cercano a la coordenada dada"""
+                if df.empty:
+                    return None
+
+                # Calcular distancia euclidiana simple
+                df = df.copy()
+                df["distancia"] = np.sqrt((df["Y"] - lat)**2 + (df["X"] - lon)**2)
+
+                # Seleccionar el más cercano
+                return df.loc[df["distancia"].idxmin()]
+
+            # =========================
+            # Pavimento (PvF)
+            # =========================
             if pred_pavimento:
-                
+                dataPvF = dataRCD[dataRCD['RECIBE'] == "PvF"]
+                cercano = gestor_mas_cercano(dataPvF, lat, lon)
+                if cercano is not None:
+                    st.success(f"✅ Pavimento puede aprovecharse en: "
+                            f"**{cercano['NOMBRE_RAZON_SOCIAL']}** "
+                            f"({cercano['MUNICIPIO']}, {cercano['DIRECCION']})")
+                    agregar_gestor(cercano, "green", "Pavimento")
+            else:
+                dataRCD_disp = dataRCD[dataRCD['RECIBE'] == "RCD"]
+                cercano = gestor_mas_cercano(dataRCD_disp, lat, lon)
+                if cercano is not None:
+                    st.error(f"❌ Pavimento no puede aprovecharse. "
+                            f"Llevar al centro de disposición final: "
+                            f"**{cercano['NOMBRE_RAZON_SOCIAL']}** "
+                            f"({cercano['MUNICIPIO']}, {cercano['DIRECCION']})")
+                    agregar_gestor(cercano, "gray", "Disposición Final (Pavimento)")
+
+            # =========================
+            # Concreto
+            # =========================
+            if pred_concreto:
+                dataConcreto = dataRCD[dataRCD['RECIBE'] == "Concreto"]
+                cercano = gestor_mas_cercano(dataConcreto, lat, lon)
+                if cercano is not None:
+                    st.success(f"✅ Concreto puede aprovecharse en: "
+                            f"**{cercano['NOMBRE_RAZON_SOCIAL']}** "
+                            f"({cercano['MUNICIPIO']}, {cercano['DIRECCION']})")
+                    agregar_gestor(cercano, "orange", "Concreto")
+            else:
+                dataRCD_disp = dataRCD[dataRCD['RECIBE'] == "RCD"]
+                cercano = gestor_mas_cercano(dataRCD_disp, lat, lon)
+                if cercano is not None:
+                    st.error(f"❌ Concreto no puede aprovecharse. "
+                            f"Llevar al centro de disposición final: "
+                            f"**{cercano['NOMBRE_RAZON_SOCIAL']}** "
+                            f"({cercano['MUNICIPIO']}, {cercano['DIRECCION']})")
+                    agregar_gestor(cercano, "gray", "Disposición Final (Concreto)")
+
+            # =========================
+            # Roca/Base
+            # =========================
+            if pred_roca:
+                dataBase = dataRCD[dataRCD['RECIBE'] == "Base"]
+                cercano = gestor_mas_cercano(dataBase, lat, lon)
+                if cercano is not None:
+                    st.success(f"✅ Roca/Base puede aprovecharse en: "
+                            f"**{cercano['NOMBRE_RAZON_SOCIAL']}** "
+                            f"({cercano['MUNICIPIO']}, {cercano['DIRECCION']})")
+                    agregar_gestor(cercano, "red", "Roca/Base")
+            else:
+                dataRCD_disp = dataRCD[dataRCD['RECIBE'] == "RCD"]
+                cercano = gestor_mas_cercano(dataRCD_disp, lat, lon)
+                if cercano is not None:
+                    st.error(f"❌ Roca/Base no puede aprovecharse. "
+                            f"Llevar al centro de disposición final: "
+                            f"**{cercano['NOMBRE_RAZON_SOCIAL']}** "
+                            f"({cercano['MUNICIPIO']}, {cercano['DIRECCION']})")
+                    agregar_gestor(cercano, "gray", "Disposición Final (Roca/Base)")
+
+            # =========================
+            # Tierras
+            # =========================
+            if pred_tierras:
+                dataTierra = dataRCD[dataRCD['RECIBE'] == "Tierras"]
+                cercano = gestor_mas_cercano(dataTierra, lat, lon)
+                if cercano is not None:
+                    st.success(f"✅ Tierras puede aprovecharse en: "
+                            f"**{cercano['NOMBRE_RAZON_SOCIAL']}** "
+                            f"({cercano['MUNICIPIO']}, {cercano['DIRECCION']})")
+                    agregar_gestor(cercano, "purple", "Tierras")
+            else:
+                dataRCD_disp = dataRCD[dataRCD['RECIBE'] == "RCD"]
+                cercano = gestor_mas_cercano(dataRCD_disp, lat, lon)
+                if cercano is not None:
+                    st.error(f"❌ Tierras no puede aprovecharse. "
+                            f"Llevar al centro de disposición final: "
+                            f"**{cercano['NOMBRE_RAZON_SOCIAL']}** "
+                            f"({cercano['MUNICIPIO']}, {cercano['DIRECCION']})")
+                    agregar_gestor(cercano, "gray", "Disposición Final (Tierras)")
+
+                    
+            # --- Después de procesar todas las predicciones ---
+            for (lat_g, lon_g), residuos in ubicaciones.items():
+                popup_html = "<b>Gestor:</b><br>"
+                for r, c in residuos:
+                    popup_html += f"✅ {r} en {c['NOMBRE_RAZON_SOCIAL']} ({c['MUNICIPIO']})<br>"
+
+                folium.Marker(
+                    location=[lat_g, lon_g],
+                    popup=popup_html,
+                    icon=folium.Icon(color="blue", icon="industry", prefix="fa")
+                ).add_to(mapa_pred)
+            
+            # Mostrar mapa de predicción con gestores
+            st.subheader("🌍 Mapa con Ubicación Seleccionada y Gestores Sugeridos")
+            st_folium(mapa_pred, width=700, height=500)
