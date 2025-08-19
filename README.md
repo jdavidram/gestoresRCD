@@ -9,30 +9,41 @@
   </thead>
 </table>
 
-> [!NOTE]
-> Practica EPM - Proyecto Talento Tech
-> 
-> Tomas esta trabajando en los modelos predictivos y mapas
-> 
-> Darwin esta trabajando en los modelos predictivos y mapas
-> 
-> Bilmar adelantará el análisis descriptivo
+> **Resumen**
+>
+> En el Valle de Aburrá se generan diariamente 18.779 toneladas de Residuos de Construcción y Demolición (RCD), de las cuales solo el 2% es aprovechado, lo que representa un desafío crítico para la sostenibilidad ambiental del territorio. Este artículo presenta una estrategia para la gestión integral de RCD en Antioquia, basada en el análisis geoespacial de los gestores existentes mediante diagramas de Voronoi, con el fin de identificar áreas de cobertura, zonas de aprovechamiento y regiones destinadas a disposición final. Además, se desarrolló una herramienta predictiva que permite estimar el porcentaje de aprovechamiento en función del tipo de RCD generado y la ubicación del proyecto. La propuesta busca fortalecer la planificación territorial, optimizar la gestión de residuos y contribuir al cumplimiento de la meta departamental de aprovechamiento para 2030.
 
 ## Introducción
 
-La gestión adecuada de los residuos de construcción y demolición (RCD) es un componente esencial para el desarrollo sostenible en el sector de la construcción. En Colombia, y particularmente en el departamento de Antioquia, el crecimiento urbano ha generado un aumento significativo en la generación de RCD, lo que plantea retos importantes en términos de aprovechamiento y disposición final. Este trabajo propone una metodología de análisis espacial que permite vincular las ejecuciones de obra con los gestores de RCD autorizados en la región. Para ello, se emplearon diagramas de Voronoi como herramienta para delimitar las áreas de cobertura de cada gestor, facilitando la identificación de las obras que potencialmente pudieron haber gestionado sus residuos de manera más eficiente. Esta aproximación busca contribuir al fortalecimiento de la planificación ambiental territorial y a la optimización de los sistemas de gestión de RCD en Antioquia.
+La generación masiva de RCD en el Valle de Aburrá, con cifras que superan las 18.700 toneladas diarias, según la [Guía regional con los procesos técnicos y jurídicos para el manejo integral de RCD](https://www.metropol.gov.co/Paginas/Noticias/nueva-guia-rcd-2023-area-metropolitana.aspx), ha generado un desafío ambiental y logístico de gran escala, convirtiendo estos residuos en uno de los principales contaminantes de los ecosistemas urbanos y periurbanos. A pesar de su potencial de reutilización, solo el 2% es actualmente aprovechado, mientras que el resto se dispone en cuerpos de agua, puntos críticos o sitios autorizados, generando impactos ambientales significativos. En respuesta, se ha formulado una estrategia integral que combina análisis territorial, modelación predictiva y herramientas de planificación para mejorar la eficiencia en la gestión de RCD en Antioquia.
 
-## Objetivo general 
-Desarrollar un análisis espacial integral de la gestión de Residuos de Construcción y Demolición (RCD) en Antioquia, que permita cuantificar el potencial de aprovechamiento de materiales no gestionados adecuadamente y generar predicciones de demanda futura, con el fin de optimizar la planificación territorial y fortalecer los sistemas de gestión sostenible de RCD en el departamento.
+## Problema impactado
 
-## Resumen ejecutivo
-El presente proyecto aborda uno de los desafíos ambientales y logísticos más significativos que enfrenta el sector de la construcción la ciudad de Medellín: la gestión ineficiente de los Residuos de Construcción y Demolición (RCD). En el contexto del acelerado crecimiento urbano y la expansión de infraestructura en la ciudad, se ha identificado una desconexión crítica entre los generadores de estos residuos (principalmente empresas constructoras) y los gestores autorizados para su manejo, lo que deriva en múltiples problemáticas ambientales, económicas y operativas.
-La situación actual se caracteriza por una marcada asimetría en la distribución espacial de la capacidad instalada para el manejo de RCD y los puntos de generación de estos residuos. Por un lado, numerosas obras de construcción desarrollan sus actividades sin acceso a información clara sobre los gestores autorizados más cercanos, mientras que, por otro lado, muchos centros de aprovechamiento operan por debajo de su capacidad máxima debido a esta falta de vinculación estratégica. Esta desconexión genera costos logísticos innecesarios, subutilización de la infraestructura disponible y, en última instancia, conduce a prácticas inadecuadas de disposición final.
-El proyecto propone implementar una metodología innovadora basada en análisis espacial avanzado, específicamente mediante el uso de diagramas de Voronoi, para establecer un sistema de asignación territorial que optimice la gestión de RCD. Esta aproximación permitirá delimitar áreas de cobertura lógica para cada gestor autorizado, considerando no solo la proximidad geográfica sino también variables como capacidad de procesamiento, tipos de materiales aceptados y condiciones de acceso.
-La importancia de esta iniciativa trasciende el ámbito operativo inmediato, ya que sus resultados contribuirán directamente a tres dimensiones fundamentales:
-Dimensión ambiental: Al facilitar el flujo adecuado de RCD hacia los gestores autorizados, se reducirá significativamente la disposición inadecuada en botaderos ilegales, disminuyendo así el impacto negativo sobre suelos, fuentes hídricas y paisajes urbanos.
-Dimensión económica: La optimización de las rutas de recolección y transporte generará ahorros sustanciales para las empresas constructoras, mientras que los gestores podrán operar con mayor eficiencia al incrementar su volumen de procesamiento.
-Dimensión regulatoria: Los hallazgos del proyecto proporcionarán insumos valiosos para el diseño de políticas públicas más efectivas en materia de gestión de RCD, permitiendo a las autoridades ambientales tomar decisiones basadas en evidencia espacial concreta
+El bajo porcentaje de aprovechamiento de los RCD (2%) representa una pérdida significativa de recursos reutilizables y una amenaza directa para los ecosistemas del Valle de Aburrá. La disposición inadecuada de estos residuos contribuye a la contaminación de cuerpos de agua, la degradación del paisaje urbano y la obstrucción de cauces naturales. Además, la falta de información georreferenciada sobre los gestores limita la capacidad de planificación y respuesta de las autoridades ambientales.
+
+## Objetivo general
+
+Diseñar una estrategia territorial para la gestión integral de RCD en Antioquia que permita:
+
+* Identificar áreas de cobertura de los gestores mediante diagramas de Voronoi.
+
+* Reconocer zonas óptimas para el aprovechamiento y disposición final.
+
+* Desarrollar una herramienta predictiva que modele el porcentaje de aprovechamiento según la ubicación del proyecto y el tipo de RCD generado.
+
+* Fortalecer la toma de decisiones en obras civiles y actividades conexas.
+
+# Marco Normativo Vigente
+
+La gestión integral de RCD en Colombia está regulada principalmente por:
+
+* Resolución 0472 de 2017: Establece los lineamientos para la gestión de RCD a nivel nacional.
+
+* Resolución 1257 de 2021: Modifica y complementa la anterior, incorporando requisitos específicos para el aprovechamiento y disposición.
+
+* Decreto 1077 de 2015: Compila normas sobre servicios públicos domiciliarios, incluyendo residuos sólidos.
+
+* En Antioquia, las autoridades ambientales como Corantioquia, Cornare y el Área Metropolitana del Valle de Aburrá han adoptado guías regionales que promueven el aprovechamiento del 55% de los RCD para 2030.
 
 ## Stakeholders Clave
 Los principales actores identificados son:
@@ -41,9 +52,9 @@ Los principales actores identificados son:
 **Autoridades ambientales:** Carecen de datos precisos para fiscalizar y planificar infraestructura de gestión de RCD.
 **Comunidad:** Sufre los efectos de la contaminación y los riesgos asociados a los botaderos ilegales.
 
-## "¿Cómo podríamos ayudar a los constructores de Antioquia a identificar y seleccionar gestores autorizados de RCD cercanos a sus obras, para reducir costos logísticos y aumentar el aprovechamiento de materiales?"
-
 ## Bibliografia
+
+* [Guía regional con los procesos técnicos y jurídicos para el manejo integral de RCD](https://www.metropol.gov.co/Paginas/Noticias/nueva-guia-rcd-2023-area-metropolitana.aspx)
 
 **Normativa**
 
@@ -69,7 +80,8 @@ Los principales actores identificados son:
 * [Servicio de gas](./DATA/subregiones.csv)
 
 > [!IMPORTANT]
-> El modulo **csv_sql.py**, no reconoce automaticamente el tipo de columna.
+>
+> Practica EPM - Proyecto Talento Tech
 
 ## Config Virtual Environment
 
