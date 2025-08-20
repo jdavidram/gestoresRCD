@@ -18,6 +18,10 @@ Se incluyen análisis descriptivos, modelos predictivos entrenados y mapas inter
 │ ├── datos_gestores_rcd.csv
 │ ├── datos_modelo_random.csv
 │ └── mapeo_municipios.csv
+|
+├── notebooks/ # Archivos .ipynb usados para realizar el análisis descriptivo y encontrar el modelo predictivo ideal
+│ ├── analysis.ipynb
+│ └── ModeloPredictivo.ipynb
 │
 ├── images/ # Recursos gráficos
 │ ├── aprovechamiento.png
