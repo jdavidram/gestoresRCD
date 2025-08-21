@@ -4,46 +4,44 @@ Este proyecto implementa un dashboard en **Streamlit** para la visualización, a
 
 Se incluyen análisis descriptivos, modelos predictivos entrenados y mapas interactivos.
 
----
+# 📂 Estructura del Proyecto
 
-## 🚀 Estructura del proyecto
-____
-|
-├── app.py # Aplicación principal de Streamlit
-├── requirements.txt # Dependencias del proyecto
-├── .gitignore # Archivos/carpetas ignorados en git
+```bash
+├── app.py                   # 🚀 Aplicación principal de Streamlit
+├── requirements.txt         # 📦 Dependencias del proyecto
+├── .gitignore               # 🙈 Archivos/carpetas ignorados en Git
 │
-├── data/ # Datos de entrada
-│ ├── Antioquia.gpkg
-│ ├── datos_gestores_rcd.csv
-│ ├── datos_modelo_random.csv
-│ └── mapeo_municipios.csv
-|
-├── notebooks/ # Archivos .ipynb usados para realizar el análisis descriptivo y encontrar el modelo predictivo ideal
-│ ├── analysis.ipynb
-│ └── ModeloPredictivo.ipynb
+├── data/                    # 📊 Datos de entrada
+│   ├── Antioquia.gpkg
+│   ├── datos_gestores_rcd.csv
+│   ├── datos_modelo_random.csv
+│   └── mapeo_municipios.csv
 │
-├── images/ # Recursos gráficos
-│ ├── aprovechamiento.png
-│ ├── aprovechamientoesp.png
-│ ├── generacionporsubregion.png
-│ └── graficatorta.png
+├── notebooks/               # 📓 Jupyter Notebooks (análisis y modelos)
+│   ├── analysis.ipynb
+│   └── ModeloPredictivo.ipynb
 │
-├── modules/ # Módulos de análisis y utilidades
-│ ├── contextProblem.py
-│ ├── descriptiveAnalysis.py
-│ ├── predictiveAnalysis.py
-│ ├── styles.py
-│ └── utils.py
+├── images/                  # 🖼️ Recursos gráficos
+│   ├── aprovechamiento.png
+│   ├── aprovechamientoesp.png
+│   ├── generacionporsubregion.png
+│   └── graficatorta.png
 │
-├── predictiveModels/ # Modelos predictivos entrenados
-│ ├── modelo_concreto.pkl
-│ ├── modelo_pavimento.pkl
-│ ├── modelo_roca.pkl
-│ ├── modelo_tierras.pkl
-│ └── modelo.py
-|____
----
+├── modules/                 # ⚙️ Módulos de análisis y utilidades
+│   ├── contextProblem.py
+│   ├── descriptiveAnalysis.py
+│   ├── predictiveAnalysis.py
+│   ├── styles.py
+│   └── utils.py
+│
+├── predictiveModels/        # 🤖 Modelos predictivos entrenados
+│   ├── modelo_concreto.pkl
+│   ├── modelo_pavimento.pkl
+│   ├── modelo_roca.pkl
+│   ├── modelo_tierras.pkl
+│   └── modelo.py
+```
+
 
 ## ⚙️ Instalación
 
