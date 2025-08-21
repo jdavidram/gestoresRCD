@@ -7,8 +7,8 @@ Se incluyen análisis descriptivos, modelos predictivos entrenados y mapas inter
 ---
 
 ## 🚀 Estructura del proyecto
-
-.
+____
+|
 ├── app.py # Aplicación principal de Streamlit
 ├── requirements.txt # Dependencias del proyecto
 ├── .gitignore # Archivos/carpetas ignorados en git
@@ -42,9 +42,7 @@ Se incluyen análisis descriptivos, modelos predictivos entrenados y mapas inter
 │ ├── modelo_roca.pkl
 │ ├── modelo_tierras.pkl
 │ └── modelo.py
-│
-└── .venv/ # Entorno virtual (ignorado en git)
-
+|____
 ---
 
 ## ⚙️ Instalación
@@ -85,5 +83,5 @@ Se incluyen análisis descriptivos, modelos predictivos entrenados y mapas inter
 Proyecto desarrollado por:
     - Tomás Acevedo Roldán
     - David Ramirez Rodriguez
-    - Darwin Salgado
-    - Bilman Andrés
+    - Darwin Salgado Martínez
+    - Bilman Andrés Marmolejo Palacio

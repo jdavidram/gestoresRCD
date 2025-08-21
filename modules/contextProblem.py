@@ -81,34 +81,57 @@ def render():
     )
 
     st.markdown(
+    "<p style='font-size:24px; font-weight:600;'>👤 Actores Clave</p>",
+    unsafe_allow_html=True)
+    st.markdown("""
+    Esta herramienta está dirigida a diversos actores que intervienen en la gestión de los Residuos de Construcción y Demolición (RCD) en Antioquia, entre los cuales se destacan:  
+    - **Autoridades ambientales**, quienes requieren información georreferenciada para la planificación y seguimiento de la disposición y aprovechamiento de RCD.  
+    - **Empresas constructoras y contratistas**, que pueden usar la herramienta para identificar los gestores más adecuados según el tipo de residuo generado en cada obra.  
+    - **Gestores de RCD**, para optimizar la logística de recolección, transporte y aprovechamiento de los residuos.  
+    - **Investigadores y académicos**, interesados en análisis geoespaciales y modelación predictiva aplicada a la gestión de residuos.  
+    """)
+
+    st.markdown(
+    "<p style='font-size:24px; font-weight:600;'>🗂️ Datos Utilizados</p>",
+    unsafe_allow_html=True)
+    st.markdown("""
+    Los datos utilizados en este proyecto fueron recolectados por uno de los autores durante sus prácticas 
+    universitarias en una empresa del sector de la construcción, lo que permitió obtener información detallada 
+    sobre las ejecuciones en obra.  
+    Adicionalmente, la información sobre los gestores de Residuos de Construcción y Demolición (RCD) y la información de los mapas de Antioquia 
+    se obtuvo de fuentes oficiales, como el Área Metropolitana del Valle de Aburrá, CORANTIOQUIA, CORNARE y Colombia en Mapas, tal como se indica 
+    en la bibliografía.
+    """)
+
+    st.markdown(
     "<p style='font-size:24px; font-weight:600;'>📚 Bibliografía</p>",
     unsafe_allow_html=True
     )
 
     st.markdown("""  
-    - [Guía regional de procesos técnicos y jurídicos para el manejo integral de RCD](URL_AQUI)
+    - [Guía regional de procesos técnicos y jurídicos para el manejo integral de RCD](https://www.metropol.gov.co/Paginas/Noticias/nueva-guia-rcd-2023-area-metropolitana.aspx)
 
     **Normativa**  
-    - [Resolución 0472 de 2017](URL_AQUI)  
-    - [Resolución 1257 de 2021](URL_AQUI)  
-    - [Resolución 1257 de 2021 - anexos](URL_AQUI)  
-    - [Listado de gestores de RCD](URL_AQUI)  
-
-    **Entidades ambientales**  
-    - [Área Metropolitana del Valle de Aburrá - AMVA](URL_AQUI)  
-    - [CORANTIOQUIA](URL_AQUI)  
-    - [CORNARE](URL_AQUI)  
-    - [CORPOURABÁ](URL_AQUI)  
+    - [Resolución 0472 de 2017](https://www.minambiente.gov.co/wp-content/uploads/2021/10/resolucion-0472-de-2017.pdf)  
+    - [Resolución 1257 de 2021](https://www.minambiente.gov.co/wp-content/uploads/2021/12/Resolucion-1257-de-2021.pdf)  
+    - [Resolución 1257 de 2021 - anexos](https://www.minambiente.gov.co/wp-content/uploads/2021/12/Resolucion-1257-de-2021-Anexos.pdf)  
+                
+    **Listado de gestores de RCD**  
+    - [Área Metropolitana del Valle de Aburrá - AMVA](https://www.metropol.gov.co/ambiental/residuos-solidos/Paginas/RCD.aspx)  
+    - [CORANTIOQUIA](https://www.corantioquia.gov.co/wp-content/uploads/2024/07/LISTADO-DE-GESTORES-DE-RCD-version-3-07-2024.pdf)  
+    - [CORNARE](https://www.cornare.gov.co/residuos/rcd/Gestores_RCD_Agosto_2024.pdf)  
+    - CORPOURABÁ  
 
     **Colombia en mapas**  
-    - [Municipios](URL_AQUI)  
+    - [Municipios](https://www.colombiaenmapas.gov.co/)  
 
-    **Datos**  
-    - [Listado de gestores de RCD](URL_AQUI)  
-    - [Ejecuciones en obra](URL_AQUI)  
-    - [Servicio de gas](URL_AQUI)  
+    **Datos Utilizados**  
+    - [Listado de gestores de RCD](https://drive.google.com/file/d/1xUqjGTZZNOD78zlFCfIJat8yXoBnqz16/view?usp=sharing)  
+    - [Ejecuciones en obra 2024 - 2025](https://drive.google.com/file/d/1gtcoMqzKFfErARIAscUY30C9u47sGBf_/view?usp=sharing)  
+    - [Mapas de Antioquia](https://drive.google.com/file/d/1Mq4_ccQbs1S8o9z7w1men-ANZKGys778/view?usp=sharing)  
 
-    **Herramienta de desarrollo**  
+                
+    **Herramientas de desarrollo**  
     - [Documentación de Python](https://docs.python.org/3/)  
     - [Documentación de Streamlit](https://docs.streamlit.io/)  
     - Inteligencias Artificiales

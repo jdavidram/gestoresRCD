@@ -32,7 +32,7 @@ def render():
     st.markdown(
         """
         <div style="text-align: center; margin: 30px 0;">
-            <h4 style="margin-bottom: 15px;">Distribución de los RCD por Subregión</h4>
+            <h4 style="margin-bottom: 15px;">Distribución de las Obras RCD por Subregión</h4>
         </div>
         """,
         unsafe_allow_html=True
